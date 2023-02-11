@@ -142,7 +142,7 @@ indent:
 
 # TOC
 toc:
-  enable: true
+  enable: false
   always_show: true
   min_depth: 1
   max_depth: 3
@@ -180,7 +180,7 @@ galleries:
 # --------------------------------------------------
 
 comments:
-  enable: true
+  enable: false
   type: gitalk # gitalk | valine | changyan
   button: true
 
