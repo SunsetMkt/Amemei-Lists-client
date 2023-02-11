@@ -106,3 +106,9 @@ deploy:
 - type: git
   repo: git@github.com:Amemei/Amemei.github.io.git
   branch: master
+
+sitemap: 
+  path: sitemap.xml
+  rel: false
+  tags: false
+  categories: false
