@@ -180,17 +180,17 @@ galleries:
 # --------------------------------------------------
 
 comments:
-  enable: false
+  enable: true
   type: gitalk # gitalk | valine | changyan
-  button: true
+  button: false
 
 # Gitalk
 gitalk:
-  owner: Amemei
-  repo: Amemei.github.io
+  owner: Q78KG
+  repo: Amemei.github.io-comment
   admin: Q78KG
-  clientID: d7b84a1b6a4b0f4ef9d4
-  clientSecret: 26b88cfc90cd2284e38f48e499a0055f4178328c
+  clientID: 9938d601b6725d3bdb6f
+  clientSecret: 1245699698f980230f06e7bb6c2917d813731572
 
 # Valine
 valine:
