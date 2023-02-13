@@ -186,9 +186,9 @@ comments:
 
 # Gitalk
 gitalk:
-  owner: Q78KG
+  owner: SuSWhW
   repo: Amemei.github.io-comment
-  admin: Q78KG
+  admin: SuSWhW
   clientID: 9938d601b6725d3bdb6f
   clientSecret: 1245699698f980230f06e7bb6c2917d813731572
 
