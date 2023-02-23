@@ -112,3 +112,23 @@ sitemap:
   rel: false
   tags: false
   categories: false
+
+# Markdown config
+markdown_it_plus:
+  render:
+    html: true						
+    xhtmlOut: false
+    breaks: true
+    linkify: true
+    typographer: false
+  plugins:
+    - markdown-it-sub
+    - markdown-it-sup
+    - markdown-it-footnote
+  anchors:	
+    level: 2
+    collisionSuffix: 'v'
+    permalink: true
+    permalinkClass: header-anchor
+    permalinkSide: 'left'
+    permalinkSymbol: ¶
