@@ -108,9 +108,9 @@ theme: flexblock
 deploy:
 - type: git
   repo: git@github.com:Amemei/Amemei.github.io.git
-  branch: main
+  branch: master
 
-sitemap: 
+sitemap:
   path: sitemap.xml
   rel: false
   tags: false
