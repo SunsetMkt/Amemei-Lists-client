@@ -3,49 +3,61 @@
   <article class="content-container layout-block post-container">
     <div class="article-info">
       <%# 如果文章设置了photos内容 %>
-      <% if (page.photos && page.photos.length) { %>
-      <section class="article-entry markdown-body layout-margin content-padding--large soft-size--large soft-style--box">
-        <% page.photos.forEach(function(photo, i) { %>
-          <p>
-            <a href="<%- url_for(photo) %>" target="_blank">
-              <img src="<%- url_for(photo) %>" itemprop="image" loading="lazy" />
-            </a>
-          </p>
-        <% }) %>
-      </section>
-      <% } %>
-      
-      <%# 输出Markdown内容 %>
-      <section class="article-entry markdown-body layout-margin content-padding--large soft-size--large soft-style--box">
-        <%- page.content %>
-      </section>
-
-      <%# 输出上一篇，下一篇内容 %>
-      <% if (page.prev || page.next){ %>
-        <nav class="article-nav">
-          <% if (page.prev) { %>
-            <%- partial("../_widget/article-nav", { page: page.prev, keyword: 'newer' }) %>
+        <% if (page.photos && page.photos.length) { %>
+          <section
+            class="article-entry markdown-body layout-margin content-padding--large soft-size--large soft-style--box">
+            <% page.photos.forEach(function(photo, i) { %>
+              <p>
+                <a href="<%- url_for(photo) %>" target="_blank">
+                  <img src="<%- url_for(photo) %>" itemprop="image" loading="lazy" />
+                </a>
+              </p>
+              <% }) %>
+          </section>
           <% } %>
-          <% if (page.next) { %>
-            <%- partial("../_widget/article-nav", { page: page.next, keyword: 'older' }) %>
-          <% } %>
-        </nav>
-      <% } %>
 
-      <section class="page-message-container layout-padding">
-        <%- partial('../_widget/comment', { post: page }) %>
-      </section>
+            <%# 输出Markdown内容 %>
+              <section
+                class="article-entry markdown-body layout-margin content-padding--large soft-size--large soft-style--box">
+                <%- page.content %>
+                  <div id="tcomment"></div>
+                  <script src="https://cdn.staticfile.org/twikoo/1.6.17/twikoo.all.min.js"></script>
+                  <script>
+                    twikoo.init({
+                      envId: 'https://twikoo.suswhw.top', // 腾讯云环境填 envId；Vercel 环境填地址（https://xxx.vercel.app）
+                      el: '#tcomment', // 容器元素
+                      // region: 'ap-guangzhou', // 环境地域，默认为 ap-shanghai，腾讯云环境填 ap-shanghai 或 ap-guangzhou；Vercel 环境不填
+                      // path: location.pathname, // 用于区分不同文章的自定义 js 路径，如果您的文章路径不是 location.pathname，需传此参数
+                      // lang: 'zh-CN', // 用于手动设定评论区语言，支持的语言列表 https://github.com/imaegoo/twikoo/blob/main/src/client/utils/i18n/index.js
+                    })
+                  </script>
+              </section>
+              <%# 输出上一篇，下一篇内容 %>
+                <% if (page.prev || page.next){ %>
+                  <nav class="article-nav">
+                    <% if (page.prev) { %>
+                      <%- partial("../_widget/article-nav", { page: page.prev, keyword: 'newer' }) %>
+                        <% } %>
+                          <% if (page.next) { %>
+                            <%- partial("../_widget/article-nav", { page: page.next, keyword: 'older' }) %>
+                              <% } %>
+                  </nav>
+                  <% } %>
+
+                    <section class="page-message-container layout-padding">
+                      <%- partial('../_widget/comment', { post: page }) %>
+                    </section>
     </div>
     <div class="widget-info">
       <%- partial("../_widget/widget-author") %>
 
-      <%- partial("../_widget/widget-toc", { page: page }) %>
+        <%- partial("../_widget/widget-toc", { page: page }) %>
 
-      <%- partial("../_widget/widget-notice") %>
+          <%- partial("../_widget/widget-notice") %>
 
-      <%- partial("../_widget/widget-categorys") %>
+            <%- partial("../_widget/widget-categorys") %>
 
-      <%- partial("../_widget/widget-tags") %>
+              <%- partial("../_widget/widget-tags") %>
     </div>
   </article>
 </div>
