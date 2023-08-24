@@ -7,14 +7,17 @@ title: Amemei.github.io
 subtitle: ''
 description: '一个小游戏网站，嗯哼~'
 keywords: Amemei, 黄油, ACG, Q78KG, 二次元, 游戏, 原神, 绅士, 本子, 漫画
-author: Amemei&Q78KG
+author: Amemei
 language: zh-CN
 timezone: ''
 
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
 url: http://Amemei.github.io
-permalink: :year/:month/:day/:title/
+permalink: posts/:abbrlink/
+abbrlink:
+  alg: crc32  # 算法：crc16(default) and crc32
+  rep: hex    # 进制：dec(default) and hex
 permalink_defaults:
 pretty_urls:
   trailing_index: true # Set to false to remove trailing 'index.html' from permalinks
@@ -98,7 +101,7 @@ ignore:
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: zhaoo
+theme: hexo-theme-flexblock
 
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
@@ -116,7 +119,7 @@ sitemap:
 # Markdown config
 markdown_it_plus:
   render:
-    html: true						
+    html: true
     xhtmlOut: false
     breaks: true
     linkify: true
@@ -126,7 +129,7 @@ markdown_it_plus:
   - markdown-it-sub
   - markdown-it-sup
   - markdown-it-footnote
-  anchors:	
+  anchors:
     level: 2
     collisionSuffix: 'v'
     permalink: true
