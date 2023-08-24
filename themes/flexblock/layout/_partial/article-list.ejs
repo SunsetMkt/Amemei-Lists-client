@@ -3,45 +3,9 @@
   <div class="moe-counter" style="text-align: center;padding-top: 20px;">
     <img src="https://moe-counter.suswhw.top/get/@amemei?theme=rule34" alt="amemei" />
   </div>
-  <div class="announcement">
-    <div class="card text-bg-light mb-3 content-container layout-block article-list">
-        <div data-step="4" data-title="站点公告" data-intro="您可以在这里查看网站的最新公告" class="card-body">
-            <div class="d-flex align-items-center">
-                <div>
-                    <h5 class="mb-0"><strong>站点公告</strong></h5>
-                    <hr>
-                </div>
-            </div>
-            <div class="fix-text fix-image">
-                <h6>本网站是由Amemei为全球华人创建的二次元游戏交流网站，浏览时请遵守当地法律法规，祝您浏览愉快！<br>有些问题去看看“说点什么”板块可能会得到解答</h6>
-                <br>
-                <h6>为了维持小站的运营，某加了点广告，如果您认为这糊住了您的眼睛可以打开广告拦截插件<br>请注意，本站并不保证<strong>弹出广告</strong>内容的有效性，请注意甄别</h6>
-                <br>
-                <h6>反馈：<a href="https://nightly.paw.msgbyte.com/invite/21zKvJrz" style="color: #f857a6;">空白的聊天室</a><br>空白的好朋友帮派介绍：主要呢，就是没事聊一聊天，闲一闲聊，娱乐的，门槛一点也不高，只要你能多来这个聊天室来看一看就好，欢迎加入和反馈<br>关于注册：邮箱随便填，能注册账号就好</h6>
-            </div>
-        </div>
-    </div>
-  </div>
-  <div class="ads">
-    <div class="card text-bg-light mb-3 content-container layout-block article-list">
-      <div class="tbaru">
-        <div onclick="window.open('https://5maomao.xyz/index.php#/register?code=gFL8yGu1')">
-          <img src="https://npm.elemecdn.com/amemei-github-io-npm-cdn/ads/猫猫云.png" alt="maomaoyun" />
-        </div>
-      </div>
-      <div class="tbaru">
-        <div onclick="window.open('https://shop119340084.taobao.com/shop/view_shop.htm?spm=a230r.1.14.4.75dc14ecGDLY4r&user_number_id=1965847533&mm_sycmid=1_140464_290ace768641419ed13b13fbad8451d4')">
-          <img src="https://npm.elemecdn.com/amemei-github-io-npm-cdn/ads/tamatoys.png" alt="tamatoys" />
-        </div>
-      </div>
-      <div class="tbaru">
-        <div onclick="window.open('https://www.rainyun.com/MTM3MTQ=_')">
-          <img src="https://npm.elemecdn.com/amemei-github-io-npm-cdn/ads/云雨.png" alt="tamatoys" />
-        </div>
-      </div>
-    </div>
-  </div>
-  </div>
+  <%- partial('announcement') %>
+  <%- partial('ads') %>
+</div>
   <div class="content-container layout-block article-list">
     <% page.posts.each(function(post, i) { %>
       <div class="article-item layout-padding">
