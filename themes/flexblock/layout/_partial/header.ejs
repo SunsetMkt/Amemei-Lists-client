@@ -1,8 +1,8 @@
 
 <!-- header container -->
-<header class="header-container<%= is_post() ? ' post' : '' %>">
+<header class="header-container<%= is_post() ? ' post' : '' %>" style="height: 100vh;">
   <% if (page.cover || theme.banner) { %>
-    <div class="post-image" style="<%= `background-image: url(${page.cover || theme.banner})` %>"></div>
+    <div class="post-image" style="<%= `background-image: url(${page.cover || theme.banner})` %>;background-attachment: fixed;background-size: cover;background-position: center center;"></div>
   <% } %>
 
   <%- partial('_partial/nav', null, {cache: !config.relative_link}) %>
