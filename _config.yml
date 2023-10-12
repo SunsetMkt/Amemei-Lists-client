@@ -3,7 +3,7 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Amemei-game.github.io
+title: Amemei-Lists.top
 subtitle: ''
 description: '一个小游戏网站，嗯哼~'
 keywords: Amemei, 黄油, ACG, Q78KG, 二次元, 游戏, 原神, 绅士, 本子, 漫画
@@ -13,7 +13,7 @@ timezone: ''
 
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
-url: https://Amemei-game.github.io/
+url: https://Amemei-Lists.top/
 permalink: posts/:abbrlink/
 abbrlink:
   alg: crc32  # 算法：crc16(default) and crc32
@@ -107,7 +107,7 @@ theme: flexblock
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
 - type: git
-  repo: git@github.com:Amemei-game/Amemei-game.github.io.git
+  repo: git@github.com:Amemei-game/Amemei-Lists.top.git
   branch: main
 
 sitemap:
