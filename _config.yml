@@ -107,8 +107,8 @@ theme: flexblock
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
 - type: git
-  repo: git@github.com:Amemei-game/Amemei-Lists.top.git
-  branch: main
+  repo: git@github.com:Anjiurine/Amemei-Lists-client.git
+  branch: gh-pages
 
 sitemap:
   path: sitemap.xml
