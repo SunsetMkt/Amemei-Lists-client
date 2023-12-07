@@ -1,32 +1,115 @@
 <!DOCTYPE html>
 <html lang="<%- config.language %>">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <meta name="theme-color" content="#3367D6"/>
+  <meta name="theme-color" content="#3367D6" />
   <link rel="apple-touch-icon" href="/icons-192.png">
   <link rel="manifest" href="/manifest.json">
   <link href="https://jsdelivrcdn.anjiurine.top/npm/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
   <script src="https://jsdelivrcdn.anjiurine.top/npm/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
   <script async src="https://ss.mndsrv.com/static/8616e6cc-9b94-4d1c-8d72-beeecdab2c58.js"></script>
+  <script>
+    /*!
+     * Color mode toggler for Bootstrap's docs (https://getbootstrap.com/)
+     * Copyright 2011-2023 The Bootstrap Authors
+     * Licensed under the Creative Commons Attribution 3.0 Unported License.
+     */
+
+    (() => {
+      'use strict'
+
+      const getStoredTheme = () => localStorage.getItem('theme')
+      const setStoredTheme = theme => localStorage.setItem('theme', theme)
+
+      const getPreferredTheme = () => {
+        const storedTheme = getStoredTheme()
+        if (storedTheme) {
+          return storedTheme
+        }
+
+        return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+      }
+
+      const setTheme = theme => {
+        if (theme === 'auto' && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+          document.documentElement.setAttribute('data-bs-theme', 'dark')
+        } else {
+          document.documentElement.setAttribute('data-bs-theme', theme)
+        }
+      }
+
+      setTheme(getPreferredTheme())
+
+      const showActiveTheme = (theme, focus = false) => {
+        const themeSwitcher = document.querySelector('#bd-theme')
+
+        if (!themeSwitcher) {
+          return
+        }
+
+        const themeSwitcherText = document.querySelector('#bd-theme-text')
+        const activeThemeIcon = document.querySelector('.theme-icon-active use')
+        const btnToActive = document.querySelector(`[data-bs-theme-value="${theme}"]`)
+        const svgOfActiveBtn = btnToActive.querySelector('svg use').getAttribute('href')
+
+        document.querySelectorAll('[data-bs-theme-value]').forEach(element => {
+          element.classList.remove('active')
+          element.setAttribute('aria-pressed', 'false')
+        })
+
+        btnToActive.classList.add('active')
+        btnToActive.setAttribute('aria-pressed', 'true')
+        activeThemeIcon.setAttribute('href', svgOfActiveBtn)
+        const themeSwitcherLabel = `${themeSwitcherText.textContent} (${btnToActive.dataset.bsThemeValue})`
+        themeSwitcher.setAttribute('aria-label', themeSwitcherLabel)
+
+        if (focus) {
+          themeSwitcher.focus()
+        }
+      }
+
+      window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
+        const storedTheme = getStoredTheme()
+        if (storedTheme !== 'light' && storedTheme !== 'dark') {
+          setTheme(getPreferredTheme())
+        }
+      })
+
+      window.addEventListener('DOMContentLoaded', () => {
+        showActiveTheme(getPreferredTheme())
+
+        document.querySelectorAll('[data-bs-theme-value]')
+          .forEach(toggle => {
+            toggle.addEventListener('click', () => {
+              const theme = toggle.getAttribute('data-bs-theme-value')
+              setStoredTheme(theme)
+              setTheme(theme)
+              showActiveTheme(theme, true)
+            })
+          })
+      })
+    })()
+  </script>
 
   <%- meta_generator() %>
 
   <% if (config.description) { %>
-    <meta name="description" content="<%= config.description %>">
+  <meta name="description" content="<%= config.description %>">
   <% } %>
 
   <% if (config.keywords) { %>
-    <meta name="keywords" content="<%= config.keywords %>">
+  <meta name="keywords" content="<%= config.keywords %>">
   <% } %>
 
   <% if (config.author) { %>
-    <meta name="author" content="<%= config.author %>">
+  <meta name="author" content="<%= config.author %>">
   <% } %>
 
   <% if (config.copyright) { %>
-    <meta name="copyright" content="<%= config.copyright %>">
+  <meta name="copyright" content="<%= config.copyright %>">
   <% } %>
 
   <%
@@ -44,46 +127,47 @@
   <title><% if (title){ %><%= title %> | <% } %><%= config.title %></title>
 
   <% if (theme.rss){ %>
-    <link rel="alternate" href="<%= url_for(theme.rss) %>" title="<%= config.title %>" type="application/atom+xml">
+  <link rel="alternate" href="<%= url_for(theme.rss) %>" title="<%= config.title %>" type="application/atom+xml">
   <% } %>
 
   <% if (theme.favicon){ %>
-    <%- favicon_tag(theme.favicon) %>
+  <%- favicon_tag(theme.favicon) %>
   <% } %>
 
   <!--mathjax latex数学公式显示支持-->
   <% if (theme.polyfill.enable) { %>
-    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <% } %>
-  <% if (theme.mathjax.enable && page.mathjax) { %> 
-    <script id="MathJax-script" async src="https://jsdelivrcdn.anjiurine.top/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <% if (theme.mathjax.enable && page.mathjax) { %>
+  <script id="MathJax-script" async src="https://jsdelivrcdn.anjiurine.top/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
   <% } %>
 
   <% if (config.highlight.enable) { %>
-    <link rel="stylesheet" href="https://jsdelivrcdn.anjiurine.top/npm/typeface-source-code-pro@1.1.13/index.min.css">
-    <link rel="stylesheet" href="https://jsdelivrcdn.anjiurine.top/gh/highlightjs/cdn-release@11.7.0/build/styles/<%= config.highlight.theme || 'monokai' %>.min.css">
+  <link rel="stylesheet" href="https://jsdelivrcdn.anjiurine.top/npm/typeface-source-code-pro@1.1.13/index.min.css">
+  <link rel="stylesheet" href="https://jsdelivrcdn.anjiurine.top/gh/highlightjs/cdn-release@11.7.0/build/styles/<%= config.highlight.theme || 'monokai' %>.min.css">
   <% } %>
 
   <% if (config.prismjs.enable) { %>
-    <% if (config.prismjs.preprocess) { %>
-      <link rel="stylesheet" href="https://jsdelivrcdn.anjiurine.top/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.min.css">
-    <% } else { %>
-      <script src="https://jsdelivrcdn.anjiurine.top/npm/prismjs@1.29.0/prism.min.js"></script>
-      <script src="https://jsdelivrcdn.anjiurine.top/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
-      <link rel="stylesheet" href="https://jsdelivrcdn.anjiurine.top/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.min.css">
-    <% } %>
-    <link rel="stylesheet" href="https://jsdelivrcdn.anjiurine.top/npm/prismjs@1.29.0/themes/prism-tomorrow.min.css">
+  <% if (config.prismjs.preprocess) { %>
+  <link rel="stylesheet" href="https://jsdelivrcdn.anjiurine.top/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.min.css">
+  <% } else { %>
+  <script src="https://jsdelivrcdn.anjiurine.top/npm/prismjs@1.29.0/prism.min.js"></script>
+  <script src="https://jsdelivrcdn.anjiurine.top/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
+  <link rel="stylesheet" href="https://jsdelivrcdn.anjiurine.top/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.min.css">
+  <% } %>
+  <link rel="stylesheet" href="https://jsdelivrcdn.anjiurine.top/npm/prismjs@1.29.0/themes/prism-tomorrow.min.css">
   <% } %>
 
   <%- css('css/style') %>
 </head>
+
 <body>
   <div class="root-container">
     <%- partial('_partial/header') %>
   </div>
-    <%- body %>
+  <%- body %>
 
-    <%- partial('_partial/footer', null, {cache: !config.relative_link}) %>
+  <%- partial('_partial/footer', null, {cache: !config.relative_link}) %>
   </div>
 
   <div class="back-to-top-fixed soft-size--round soft-style--box">
@@ -99,4 +183,5 @@
   <%# 加载自定义脚本代码 %>
   <%- partial('_partial/footer-other') %>
 </body>
+
 </html>
