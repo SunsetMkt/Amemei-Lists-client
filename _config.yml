@@ -107,7 +107,7 @@ theme: flexblock
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
 - type: git
-  repo: git@github.com:Anjiurine/Amemei-Lists-client.git
+  repo: git@github.com:Hoshino-Yumetsuki/Amemei-Lists-client.git
   branch: gh-pages
 
 sitemap:
